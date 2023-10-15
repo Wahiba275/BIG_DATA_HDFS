@@ -26,7 +26,7 @@ Start the HDFS services and YARN services with the following commands:
 
 `http://localhost:50070`
 
-![Alt Text](TP1-TP2/web interface.PNG)
+![Alt Text](TP1-TP2/web.PNG)
 
 ## Formulate the tree structure below in HDFS
 
@@ -34,15 +34,15 @@ Start the HDFS services and YARN services with the following commands:
 
 `hdfs dfs -mkdir -p SDIA/{JAVA/{TPs,Cours},PYTHON/{TPs,Cours}}`
 
-![Alt Text](TP1-TP2/create.PNG)
+![Alt Text](TP1-TP2/directories.PNG)
 
 ## Generate files within a directory 
 
 `hdfs dfs -touchz SDIA/PYTHON/Cours/{CoursPY1,CoursPY2,CoursPY3}`
 
-![Alt Text](TP1-TP2/create files.PNG)
+![Alt Text](TP1-TP2/files.PNG)
 
-![Alt Text](TP1-TP2/python courses.PNG)
+![Alt Text](TP1-TP2/cours.PNG)
 
 
 ## Add content to files and then view the file contents
