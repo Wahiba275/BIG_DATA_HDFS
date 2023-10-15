@@ -101,20 +101,72 @@ Start the HDFS services and YARN services with the following commands:
 ![Alt Text](TP1-TP2/remove.PNG)
 
 ## Hadoop FileSystem API
-The following example demonstrates how to perform a write operation to a text file in HDFS:
+The following example demonstrates how to write to a text file in HDFS:
 ```java
-public class MyJavaClass {
-    public static void main(String[] args) {
-        // Your Java code here
+package org.example;
+
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.io.*;
+import org.apache.hadoop.fs.Path;
+import java.nio.charset.StandardCharsets;
+
+
+public class Write {
+    public static void main(String[] args) throws IOException {
+        Configuration configuration = new Configuration();
+        configuration.set("fs.defaultFS","hdfs://localhost:9000");
+        FileSystem fileSystem = FileSystem.get(configuration);
+        Path path = new Path("/home/bouzyan/TP1CPP/text");
+        FSDataOutputStream fsDataOutputStream = fileSystem.create(path);
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fsDataOutputStream, StandardCharsets.UTF_8));
+        bufferedWriter.write("JAVA1");
+        bufferedWriter.newLine();
+        bufferedWriter.write("PYTHON");
+        bufferedWriter.newLine();
+        bufferedWriter.close();
+        fsDataOutputStream.close();
+    }
+}
+```
+
+
+
+
+The following example demonstrates how to read from a text file in HDFS:
+```java
+package org.example;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import org.apache.hadoop.fs.Path;
+
+public class Read {
+    public static void main(String[] args) throws IOException {
+        Configuration configuration = new Configuration();
+        configuration.set("fs.defaultFS","hdfs://localhost:9000");
+        FileSystem fileSystem = FileSystem.get(configuration);
+        Path path = new Path("/home/bouzyan/TP1CPP/text");
+        FSDataInputStream fsDataInputStream = fileSystem.open(path);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fsDataInputStream, StandardCharsets.UTF_8));
+        String line = null;
+        while((line = bufferedReader.readLine()) != null){
+            System.out.println(line);
+        }
+        fsDataInputStream.close();
+        bufferedReader.close();
     }
 }
 
-
-
-
-
-
-
+```
+![Alt Text](TP1-TP2/java.PNG)
 
 
 
