@@ -7,48 +7,42 @@ HDFS, or Hadoop Distributed File System, is a distributed file system designed t
 Big data refers to extremely large and complex data sets that are difficult to manage, process, and analyze using traditional data processing tools and methods. The term "big data" encompasses not only the sheer volume of data but also its variety, value, velocity, and veracity.
 
 ## Start Hadoop processes
-## Start HDFS service 
-Start the HDFS services with the following command:
+## Start HDFS service and YARN service
+Start the HDFS services and YARN services with the following commands:
 
 `start-dfs.sh`
 
-![Alt Text](URL)
-
-## Start YARN service 
-Start the HDFS services with the following command:
-
 `start-yarn.sh`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/start-dfs-yarn.PNG)
 
 ## Check if the services have been started
 
 `jps`
 
-![Alt Text](URL)
-
+![Alt Text](TP1-TP2/jps.PNG)
 
 ## Open the web interface for the NameNode
 
 `http://localhost:50070`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/web interface.PNG)
 
 ## Formulate the tree structure below in HDFS
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/arbo.PNG)
 
-'hdfs dfs -mkdir -p SDIA/{JAVA/{TPs,Cours},PYTHON/{TPs,Cours}}'
+`hdfs dfs -mkdir -p SDIA/{JAVA/{TPs,Cours},PYTHON/{TPs,Cours}}`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/create.PNG)
 
 ## Generate files within a directory 
 
 `hdfs dfs -touchz SDIA/PYTHON/Cours/{CoursPY1,CoursPY2,CoursPY3}`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/create files.PNG)
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/python courses.PNG)
 
 
 ## Add content to files and then view the file contents
@@ -57,19 +51,19 @@ Start the HDFS services with the following command:
 
 `hdfs dfs -cat SDIA/PYTHON/Cours/CoursPY1`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/addContent.PNG)
 
 ## Transfer files to a different repository
 
 `hdfs dfs -cp -f SDIA/PYTHON/Cours/{CoursPY1,CoursPY2,CoursPY3} SDIA/JAVA/Cours`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/copy.PNG)
 
 ## Delete a file
 
 `hdfs dfs -rm SDIA/JAVA/Cours/CoursPY2`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/delete.PNG)
 
 ## Rename files
 
@@ -77,25 +71,26 @@ Start the HDFS services with the following command:
 
 `hdfs dfs -mv SDIA/JAVA/Cours/CoursPY3 SDIA/JAVA/Cours/CoursJAVA2`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/rename.PNG)
 
 ## Create file in local 
 
 `touch {TP1CPP,TP2CPP,TP1JAVA,TP2JAVA,TP3JAVA}`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/create1.PNG)
 
 ## Transfer files from a local source to HDFS
 
 `hdfs dfs -copyFromLocal {TP1CPP,TP2CPP} SDIA/PYTHON/TPs`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/fromLocal.PNG)
 
 ## Show the contents of the repository
 
 `hdfs dfs -ls -R SDIA`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/display.PNG)
+
 
 ## Delete file and directory
 
@@ -103,7 +98,7 @@ Start the HDFS services with the following command:
 
 `hdfs dfs -rmr SDIA/JAVA`
 
-![Alt Text](URL)
+![Alt Text](TP1-TP2/remove.PNG)
 
 ## Hadoop FileSystem API
 The following example demonstrates how to perform a write operation to a text file in HDFS:
